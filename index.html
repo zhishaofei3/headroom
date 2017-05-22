@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>headroom.js</title>
+	<style type="text/css">
+		.animated {
+			animation-duration: 0.5s;
+			animation-fill-mode: both;
+			will-change: transform, opacity;
+		}
+
+		@keyframes swingInX {
+			0% {
+				transform: perspective(400px) rotateX(-90deg);
+			}
+
+			100% {
+				transform: perspective(400px) rotateX(0deg);
+			}
+		}
+
+		.animated.swingInX {
+			-webkit-transform-origin: top;
+			-moz-transform-origin: top;
+			-ie-transform-origin: top;
+			-o-transform-origin: top;
+			transform-origin: top;
+
+			backface-visibility: visible !important;
+			animation-name: swingInX;
+		}
+
+		@keyframes swingOutX {
+			0% {
+				transform: perspective(400px) rotateX(0deg);
+			}
+			100% {
+				transform: perspective(400px) rotateX(-90deg);
+			}
+		}
+
+		.animated.swingOutX {
+			-webkit-transform-origin: top;
+			animation-name: swingOutX;
+			backface-visibility: visible !important;
+		}
+		header {
+			height: 60px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			background-color: #999;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	ksadsadslkjlkjds
+</header>
+
+<div style="height: 10000px;"></div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3"></script>
+<script type="text/javascript" src="js/jQuery.headroom.js"></script>
+<script type="text/javascript">
+	$('header').headroom({
+		"classes": {
+			"initial": "animated",
+			"pinned": "swingInX",
+			"unpinned": "swingOutX"
+		}
+	});
+</script>
+</body>
+</html>
